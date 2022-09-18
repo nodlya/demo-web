@@ -8,44 +8,40 @@ import java.util.Date;
 
 @Entity
 public class Post implements Serializable {
-
+    
     @Id
     @GeneratedValue
     private Long id;
     private String text;
-    private Integer likes;
-    private String creationDate;
-
+    private Date creationDate;
+    private int likes;
+    
     public Post() {
-
     }
-    public Post(Date creationDate, Long id, String text) {
+    
+    public Post(Long id, String text, Date creationDate) {
         this.id = id;
         this.text = text;
+        this.creationDate = creationDate;
     }
-
-    public Post(long id, String text) {
-        this.id = id;
-        this.text = text;
-        this.creationDate = new Date().toString();
-        this.likes = new Integer(0);
-    }
-
+    
     public Long getId() {
         return id;
     }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
-    }
-
-    public Integer getLikes() {
-        return likes;
-    }
-
+    
     public String getText() {
         return text;
     }
-
-    public String getCreationDate() { return creationDate; }
+    
+    public Date getCreationDate() {
+        return creationDate;
+    }
+    
+    public int getLikes() {
+        return likes;
+    }
+    
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
 }

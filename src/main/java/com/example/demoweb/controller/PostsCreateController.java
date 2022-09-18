@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PostsCreateController {
     @Autowired
     PostService postsService;
+    
     @RequestMapping(path = "/new", method = RequestMethod.GET)
-    public String create() {
+    public String create(Model model) {
+        model.addAttribute("appName", "Моё супер приложение");
         return "create";
     }
+    
     @RequestMapping(path = "/new", method = RequestMethod.POST)
     public String doCreate(@ModelAttribute("text") String text) {
         postsService.create(text);
